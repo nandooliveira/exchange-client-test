@@ -1,6 +1,7 @@
 #!env/bin/python
 # -*- coding: utf-8 -*-
 u"""Main Module."""
+from datetime import datetime
 import time
 import os
 import logging
@@ -10,13 +11,14 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from restclients.exchange_rate import ExchangeRateRestClient
 from repository.exchange_rate import ExchangeRateRepository
 
-from controllers.main import main
 from controllers.exchange_rate import exchange_rate
+from flask.ext.cors import CORS
 
 logging.basicConfig()
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
+CORS(app)
 
 
 def load_exchange_rate():
@@ -29,7 +31,8 @@ def load_exchange_rate():
     repository = ExchangeRateRepository()
 
     exchange_rates = rest_client.get_exchange_rate()
-    repository.save({"timestamp": time.time(), "rates": exchange_rates})
+    repository.save({"datetime": datetime.now().isoformat(),
+                     "rates": exchange_rates})
 
 
 def init():
@@ -43,7 +46,6 @@ def init():
                      id='exg_rate')
 
     # register our blueprints
-    # app.register_blueprint(main)
     app.register_blueprint(exchange_rate)
 
     # initialize flask app
