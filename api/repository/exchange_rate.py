@@ -2,6 +2,11 @@
 """Module responsible for managing exchange rate on database."""
 
 from pymongo import MongoClient
+import os
+
+MONGO_URL = os.environ.get('MONGO_URL')
+if not MONGO_URL:
+    MONGO_URL = "192.168.0.14"
 
 
 class ExchangeRateRepository:
@@ -9,7 +14,7 @@ class ExchangeRateRepository:
 
     def __init__(self):
         u"""Initialize repository."""
-        self.client = MongoClient('192.168.0.14', 27017)
+        self.client = MongoClient(MONGO_URL, 27017)
         self.db = self.client.lotebox
         self.exchange_rates = self.db.exchange_rates
 
