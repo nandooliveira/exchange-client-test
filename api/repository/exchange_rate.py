@@ -6,7 +6,7 @@ import os
 
 MONGO_URL = os.environ.get('MONGO_URL')
 if not MONGO_URL:
-    MONGO_URL = "192.168.0.14"
+    MONGO_URL = "159.203.82.71"
 
 
 class ExchangeRateRepository:
