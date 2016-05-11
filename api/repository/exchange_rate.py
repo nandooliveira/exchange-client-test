@@ -17,13 +17,13 @@ class ExchangeRateRepository:
         u"""Save method."""
         return self.exchange_rates.insert_one(exchange_rate).inserted_id
 
-    def find(self, limit=None, params={}):
+    def find(self, limit=None, params={}, sort=[("datetime", -1)]):
         """Find last limit of registries."""
         if limit:
-            cursor = self.exchange_rates.find(params).sort([("_id", 1)])\
+            cursor = self.exchange_rates.find(params).sort(sort)\
                     .limit(int(limit))
         else:
-            cursor = self.exchange_rates.find(params)
+            cursor = self.exchange_rates.find(params).sort(sort)
 
         exchange_rates = []
         for rate in cursor:
