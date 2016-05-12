@@ -8,7 +8,6 @@ MONGO_URL = os.environ.get('MONGO_URL')
 if not MONGO_URL:
     MONGO_URL = "159.203.82.71"
 
-
 class ExchangeRateRepository:
     u"""Repository to persist exchange rates."""
 

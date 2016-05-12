@@ -61,7 +61,6 @@ def findByRangeDate(initial_date, final_date):
 def current():
     u"""Main entrypoint."""
     rest_client = ExchangeRateRestClient()
-
     return Response(
         json.dumps(rest_client.get_exchange_rate()),
         mimetype="application/json"
