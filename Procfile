@@ -1,2 +1,1 @@
-web: waitress-serve --port=5000 runserver:application
-
+web: gunicorn wsgi:application --log-file -
