@@ -1,7 +1,7 @@
 #!env/bin/python
 # initialize flask app
 u"""Starts development server."""
-from app import app, init
+from api import app, init
 
 init()
 

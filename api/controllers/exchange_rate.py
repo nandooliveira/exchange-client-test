@@ -2,9 +2,9 @@
 u"""ExchangeRate app Controller."""
 import json
 from flask import Response, Blueprint, request, make_response, jsonify
-from repository.exchange_rate import ExchangeRateRepository
-from restclients.exchange_rate import ExchangeRateRestClient
-from utils.json_encoder import JSONEncoder
+from ..repository.exchange_rate import ExchangeRateRepository
+from ..restclients.exchange_rate import ExchangeRateRestClient
+from ..utils.json_encoder import JSONEncoder
 
 exchange_rate = Blueprint('exchange_rate', __name__)
 

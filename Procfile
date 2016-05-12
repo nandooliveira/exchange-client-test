@@ -1,1 +1,2 @@
-web: gunicorn api:app --log-file -
+web: waitress-serve --port=5000 runserver:application
+

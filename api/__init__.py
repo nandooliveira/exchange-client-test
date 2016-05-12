@@ -48,6 +48,9 @@ def init():
     # register our blueprints
     app.register_blueprint(exchange_rate)
 
+    # app.run(debug=app.config['DEBUG'], host=app.config["HOST"],
+    #         port=app.config["PORT"])
+
 
 @app.errorhandler(404)
 def not_found(error):

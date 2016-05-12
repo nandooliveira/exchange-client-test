@@ -2,7 +2,7 @@
 u"""Module responsible to load exchange rates from rest api."""
 import requests
 from base import BaseRestClient
-from repository.exchange_rate import ExchangeRateRepository
+from api.repository.exchange_rate import ExchangeRateRepository
 from datetime import datetime
 
 
