@@ -38,12 +38,12 @@ def load_exchange_rate():
 def init():
     u"""Initializer."""
     # initialize Cron scheduler
-    #if not app.debug or os.environ.get('WERKZEUG_RUN_MAIN') == 'true':
-    cron = BackgroundScheduler(daemon=True)
-    cron.start()
-    cron.add_job(load_exchange_rate, 'interval',
-                 minutes=app.config["FETCH_DURATION_IN_MINUTES"],
-                 id='exg_rate')
+    if not app.debug or os.environ.get('WERKZEUG_RUN_MAIN') == 'true':
+        cron = BackgroundScheduler(daemon=True)
+        cron.start()
+        cron.add_job(load_exchange_rate, 'interval',
+                     minutes=app.config["FETCH_DURATION_IN_MINUTES"],
+                     id='exg_rate')
 
     # register our blueprints
     app.register_blueprint(exchange_rate)
