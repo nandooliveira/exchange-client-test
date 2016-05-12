@@ -18,6 +18,7 @@ logging.basicConfig()
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
+app.debug = False
 CORS(app)
 
 
