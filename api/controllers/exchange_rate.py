@@ -17,7 +17,7 @@ def index():
         params[key] = {"$regex": unicode(request.args.get(key))}
 
     repository = ExchangeRateRepository()
-    rates = repository.find(params=params)
+    rates = repository.find(params=params, sort=[('datetime', 1)])
 
     return Response(
         JSONEncoder().encode(rates),
