@@ -36,7 +36,7 @@ def findByRangeDate(initial_date, final_date):
     if initial_date == final_date:
         rates = repository.find(params={"datetime": {
             "$regex": unicode(initial_date)
-            }})
+            }}, sort=[('datetime', 1)])
     elif initial_date > final_date:
         return make_response(jsonify(
             {
